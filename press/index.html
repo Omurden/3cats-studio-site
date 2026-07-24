@@ -117,7 +117,9 @@ section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--rule)}
 
 /* games */
 .game-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px)}
-.game-grid .shelf{grid-column:1/-1}
+/* The shelf spanned the full row while there were two titles; with three it
+   takes the fourth cell so the grid closes as a 2x2 instead of leaving a hole. */
+.game-grid .shelf{grid-column:auto}
 @media(max-width:860px){.game-grid{grid-template-columns:1fr}}
 .game-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
 .game-art{aspect-ratio:16/8.5;background:var(--paper-2);border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
