@@ -1,0 +1,6 @@
+{
+  "game": "All Time High",
+  "version": "v1.0.0",
+  "build": "demo",
+  "target": "desktop"
+}
