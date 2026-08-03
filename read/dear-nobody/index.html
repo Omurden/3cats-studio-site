@@ -30,10 +30,14 @@
   span.censorable{cursor:pointer;border-bottom:1px dashed rgba(140,28,19,.55);
     transition:background .15s ease;border-radius:2px;padding:0 1px}
   span.censorable:hover{background:rgba(140,28,19,.10)}
-  span.censorable.struck{position:relative;color:transparent;cursor:default;
-    border-bottom-color:transparent;background:none;user-select:none}
-  span.censorable.struck::after{content:"";position:absolute;left:0;right:0;top:calc(50% - .07em);
-    height:.16em;background:var(--strike);border-radius:1px}
+  /* The bars go through the WORDS, never through the paper — the Bureau's own instruction, and
+     the reason this is a strike-through rather than a blackout. It must also survive line wrapping:
+     an absolutely-positioned ::after bar collapses to a single stub the moment a span breaks across
+     two lines, which is exactly what it did on a phone. text-decoration wraps natively. */
+  span.censorable.struck{color:#7d7264;cursor:default;border-bottom-color:transparent;
+    background:none;text-decoration:line-through;text-decoration-color:var(--strike);
+    -webkit-text-decoration-color:var(--strike);text-decoration-thickness:.15em;
+    text-decoration-skip-ink:none}
   .hint{font:500 12px/1.5 ui-sans-serif,system-ui,sans-serif;color:#6d6355;
     margin:1.6rem 0 0;padding-top:1rem;border-top:1px solid rgba(36,31,25,.14)}
   .stamp{position:absolute;right:clamp(14px,4vw,32px);bottom:clamp(14px,4vw,28px);
