@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Read one letter — Dear Nobody</title>
+<meta name="description" content="One letter from Dear Nobody, a game where you are the wartime censor. Strike the lines that must not pass. Ninety seconds, nothing to install.">
+<meta property="og:title" content="Read one letter — Dear Nobody">
+<meta property="og:description" content="You are the censor. Strike the lines that must not pass — and watch what is left of the letter.">
+<meta property="og:type" content="article">
+<style>
+  :root{
+    --ink:#e8e2d6; --ink-2:#a49c8c; --bg:#0d0c0b; --paper:#efe7d6; --paper-ink:#241f19;
+    --rule:#2b2722; --strike:#8c1c13; --stamp:#7a2018;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 ui-serif,Georgia,"Times New Roman",serif;
+    -webkit-font-smoothing:antialiased;padding:clamp(20px,5vw,64px) clamp(16px,5vw,24px)}
+  main{max-width:62ch;margin:0 auto}
+  .eyebrow{font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-2)}
+  h1{font-size:clamp(28px,6vw,40px);line-height:1.1;margin:.5rem 0 1rem;font-weight:600}
+  .lede{color:var(--ink-2);margin:0 0 2rem;text-wrap:pretty}
+  .desk{background:var(--paper);color:var(--paper-ink);border-radius:2px;
+    padding:clamp(20px,5vw,40px);box-shadow:0 24px 60px rgba(0,0,0,.55);position:relative}
+  .hand{font-style:italic;color:#5d5347;font-size:.92em;margin:0 0 1.4rem;text-wrap:pretty}
+  .letter p{margin:0 0 1rem;text-wrap:pretty}
+  .sig{margin-top:1.4rem}
+  span.censorable{cursor:pointer;border-bottom:1px dashed rgba(140,28,19,.55);
+    transition:background .15s ease;border-radius:2px;padding:0 1px}
+  span.censorable:hover{background:rgba(140,28,19,.10)}
+  span.censorable.struck{position:relative;color:transparent;cursor:default;
+    border-bottom-color:transparent;background:none;user-select:none}
+  span.censorable.struck::after{content:"";position:absolute;left:0;right:0;top:calc(50% - .07em);
+    height:.16em;background:var(--strike);border-radius:1px}
+  .hint{font:500 12px/1.5 ui-sans-serif,system-ui,sans-serif;color:#6d6355;
+    margin:1.6rem 0 0;padding-top:1rem;border-top:1px solid rgba(36,31,25,.14)}
+  .stamp{position:absolute;right:clamp(14px,4vw,32px);bottom:clamp(14px,4vw,28px);
+    border:3px solid var(--stamp);color:var(--stamp);border-radius:3px;
+    font:700 10px/1.25 ui-sans-serif,system-ui,sans-serif;letter-spacing:.1em;
+    text-transform:uppercase;padding:8px 10px;transform:rotate(-7deg);text-align:center;
+    opacity:0;transition:opacity .25s ease;pointer-events:none;max-width:44vw}
+  .stamp.on{opacity:.88}
+  .after{margin-top:2.4rem}
+  .after p{color:var(--ink-2);text-wrap:pretty}
+  .after strong{color:var(--ink);font-weight:600}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.6rem}
+  .cta a{display:inline-block;text-decoration:none;border-radius:2px;
+    font:600 14px/1 ui-sans-serif,system-ui,sans-serif;padding:13px 18px}
+  .cta a.primary{background:var(--paper);color:var(--paper-ink)}
+  .cta a.ghost{border:1px solid var(--rule);color:var(--ink)}
+  footer{margin-top:2.6rem;color:#6b6458;font:400 12px/1.6 ui-sans-serif,system-ui,sans-serif}
+  footer a{color:#8d8574}
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Dear Nobody &middot; one letter</p>
+  <h1>You read other people&rsquo;s mail for a living.</h1>
+  <p class="lede">It is the first Monday of the quarter. Forty-one letters in the wire basket, a pot
+  of gum, the pencil they issue you and the pen they trust you with. Rule of the floor: read once
+  for the Republic, once for the sentence. Nobody says what the second read is for.</p>
+
+  <div class="desk">
+    <p class="hand">A soldier&rsquo;s hand, careful, the letters built rather than written &mdash; a
+    man who learned penmanship once, formally, and has kept it the way you keep Sunday clothes.</p>
+
+    <div class="letter">
+      <p>Dear Lisette,</p>
+      <p>Your last found me well, and the shop&rsquo;s news better than any communiqu&eacute;. So the
+      Widow Perrin wants the whole window in chrysanthemums for All Souls and pretends it is her idea
+      and not the calendar&rsquo;s &mdash; take her money, sister, and take it twice; she has opinions
+      about credit.</p>
+      <p>We are settled comfortably. <span class="censorable" data-req="1">We are billeted at
+      Vercourt, by the old mill &mdash; you would know it from the postcards, the wheel is still
+      turning</span> and the barn is dry, <span class="censorable" data-req="1">which is more than
+      the 143rd can say for theirs,</span> so we count ourselves kings.</p>
+      <p>Send the bulb catalogue when it comes. I have been promising the lieutenant tulips in the
+      spring, and a man who has promised tulips has to live carefully.</p>
+      <p>Plant them shallow this year. I want to see them from the road when I come home.</p>
+      <p class="sig">Your brother, who is well, and says so twice.</p>
+    </div>
+
+    <p class="hint" id="hint">Two lines here break Article One &mdash; locations, units, movements.
+    <b>Tap them to strike them.</b></p>
+    <div class="stamp" id="stamp">Passed by the<br>Bureau of<br>Postal Control</div>
+  </div>
+
+  <div class="after" id="after" hidden>
+    <p><strong>That is the whole game.</strong> The bars go through the words, never through the
+    paper. Lisette will read that her brother is settled comfortably <i>somewhere</i>, which is where
+    every soldier in the Republic is billeted now &mdash; the great village of Somewhere, population:
+    everyone&rsquo;s brother.</p>
+    <p>Most of every letter passes whole. That is the part the cartoons never draw.</p>
+    <p>Elsewhere on your desk are two people who have never met, whose entire relationship is the
+    paper in front of you. Strike a line out of <em>that</em> and it is gone from the thing itself,
+    not just from the page. And later &mdash; past where this excerpt stops &mdash; one of them stops
+    writing to the front, and starts writing to you.</p>
+    <div class="cta">
+      <a class="primary" href="https://store.steampowered.com/app/4957320/" target="_blank" rel="noopener">Wishlist on Steam &middot; out Sep 23</a>
+      <a class="ghost" href="https://3cats.studio#newsletter" target="_blank" rel="noopener">Tell me about the next one</a>
+    </div>
+  </div>
+
+  <footer>
+    ~35&ndash;45k words &middot; six endings &middot; ten languages &middot; one or two sittings.
+    <br>3Cats Studio &mdash; <a href="https://3cats.studio">3cats.studio</a>. Text from Chapter One,
+    unaltered.
+  </footer>
+</main>
+
+<script>
+  const spans = [...document.querySelectorAll('.censorable')];
+  const stamp = document.getElementById('stamp');
+  const after = document.getElementById('after');
+  const hint  = document.getElementById('hint');
+  spans.forEach(s => s.addEventListener('click', () => {
+    if (s.classList.contains('struck')) return;
+    s.classList.add('struck');
+    if (spans.every(x => x.classList.contains('struck'))) {
+      stamp.classList.add('on');
+      hint.innerHTML = 'Stamped. One down, forty to go.';
+      after.hidden = false;
+    }
+  }));
+</script>
+</body>
+</html>
