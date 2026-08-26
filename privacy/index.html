@@ -122,7 +122,8 @@ section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--rule)}
 .game-grid .shelf{grid-column:auto}
 @media(max-width:860px){.game-grid{grid-template-columns:1fr}}
 .game-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
-.game-art{aspect-ratio:16/8.5;background:var(--paper-2);border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
+/* STU-3226: no aspect-ratio here on purpose — each box carries its own, derived from its image by ratio(). A house default would silently crop the next capsule that arrives at a new shape, which is the bug this replaced. A missing inline ratio collapses the box, which is loud. */
+.game-art{background:var(--paper-2);border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
 .game-art img{width:100%;height:100%;object-fit:cover;display:block}
 .game-body{padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:16px;flex:1}
 .game-kicker{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -219,7 +220,7 @@ section[id]{scroll-margin-top:72px}
 .titleband{padding:clamp(48px,7vw,88px) 0 0;border-top:1px solid var(--rule)}
 .titlehead{font:400 var(--step-4)/1.05 var(--serif);letter-spacing:-.015em;margin-top:10px}
 section[id]{scroll-margin-top:80px}
-.pressband{margin-top:clamp(28px,5vw,48px);border:1px solid var(--rule);border-radius:6px;overflow:hidden;aspect-ratio:1600/620;background:var(--paper-2)}
+.pressband{margin-top:clamp(28px,5vw,48px);border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--paper-2)}  /* STU-3226: ratio is inline, from the asset */
 .pressband img{width:100%;height:100%;object-fit:cover;display:block}
 .sechead{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(28px,4vw,44px)}
 .sechead h2{font:400 var(--step-3)/1.1 var(--serif);letter-spacing:-.01em}
