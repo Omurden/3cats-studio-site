@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Game Studio Kit — 3Cats Studio</title>
+<meta name="description" content="The playbooks, release discipline and runnable checks a working game studio uses, in a form your coding agent can execute. Steam, the App Store, Google Play and itch from one codebase.">
+<meta name="theme-color" content="#F6ECDA">
+<meta property="og:title" content="The Game Studio Kit — 3Cats Studio">
+<meta property="og:description" content="The playbooks, release discipline and runnable checks a working game studio uses, in a form your coding agent can execute. Steam, the App Store, Google Play and itch from one codebase.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23FBF9F5'/%3E%3Ccircle cx='10' cy='16' r='3.2' fill='%239FAEE5'/%3E%3Ccircle cx='16' cy='16' r='3.2' fill='%23E5A0B4'/%3E%3Ccircle cx='22' cy='16' r='3.2' fill='%23EFD08C'/%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   "WHITE CUBE" (editorial / gallery) · "Seaside" palette (D-074)
+   Magazine logic: big serif display, hairline rules, numbered
+   sections, generous whitespace. Terracotta / sea / sand appear
+   as art plates + the Wishlist control, not wallpaper.
+   ============================================================ */
+:root{
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,monospace;
+  --step--1:clamp(.8rem,.78rem + .1vw,.875rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.125rem);
+  --step-1:clamp(1.25rem,1.15rem + .5vw,1.5rem);
+  --step-2:clamp(1.6rem,1.4rem + 1vw,2.1rem);
+  --step-3:clamp(2.2rem,1.8rem + 2vw,3.2rem);
+  --step-4:clamp(2.9rem,2rem + 4.5vw,5.6rem);
+}
+[data-theme="light"]{
+  color-scheme:light;
+  /* "Beach Day" (D-074): warm cream canvas + sun-faded terracotta, with a marine-blue
+     counterpoint. Recolours D-068 White Cube's light theme; structure/type unchanged. */
+  --paper:#F6ECDA; --paper-2:#EFE1C8; --ink:#2C2019; --ink-2:#6B5B47;
+  --rule:#DCC9A4;
+  --cat-a:#5C8A9C; --cat-b:#BF4A2C; --cat-c:#E2D0A4;
+  --cat-a-deep:#356273; --cat-b-deep:#953619; --cat-c-deep:#7C6636;
+  --plate-a:#DCE6EA; --plate-b:#F1DBCC; --plate-c:#F1E7CF;
+  --card:#FFFDF7; --shadow:0 1px 0 var(--rule);
+  --btn:#BF4A2C; --btn-2:#356273; --btn-ink:#FBF4E6;
+}
+[data-theme="dark"]{
+  color-scheme:dark;
+  /* "Dusk" (D-074): the Beach Day palette after sundown — warm espresso ground, the
+     terracotta lifted to coral and the sea to a pale sky so both accents read on dark. */
+  --paper:#241A16; --paper-2:#2E211B; --ink:#F3E7D3; --ink-2:#B49E82;
+  --rule:#42332A;
+  --cat-a:#84AEBD; --cat-b:#DE7150; --cat-c:#CBAD84;
+  --cat-a-deep:#A6C9D4; --cat-b-deep:#EC9770; --cat-c-deep:#E0C89A;
+  --plate-a:#26333A; --plate-b:#3A2A22; --plate-c:#33291E;
+  --card:#2C201A; --shadow:0 1px 0 var(--rule);
+  --btn:#B84A2B; --btn-2:#33627A; --btn-ink:#FBF4E6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--paper);color:var(--ink);
+  font:400 var(--step-0)/1.6 var(--sans);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:var(--ink);text-decoration-color:var(--cat-b);text-underline-offset:3px}
+a:hover{color:var(--cat-b-deep)}
+:focus-visible{outline:2px solid var(--cat-a-deep);outline-offset:3px;border-radius:2px}
+img{max-width:100%}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:clamp(20px,4vw,48px)}
+.label{font:500 var(--step--1)/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.nowrap{white-space:nowrap}
+
+/* header */
+header{
+  position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);
+}
+.nav{display:flex;align-items:center;gap:24px;height:64px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:600 var(--step-0)/1 var(--serif);letter-spacing:.01em}
+.mark{display:flex;gap:5px}
+.mark i{width:11px;height:11px;border-radius:50%;display:block}
+.mark i:nth-child(1){background:var(--cat-a)}
+.mark i:nth-child(2){background:var(--cat-b)}
+.mark i:nth-child(3){background:var(--cat-c)}
+.nav nav{margin-left:auto;display:flex;gap:clamp(14px,2.5vw,30px)}
+.nav nav a{font:500 var(--step--1)/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink-2)}
+.nav nav a:hover{color:var(--ink)}
+#themeBtn{
+  border:1px solid var(--rule);background:var(--card);color:var(--ink);
+  width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1;
+  display:grid;place-items:center;transition:transform .2s;
+}
+#themeBtn:hover{transform:rotate(20deg)}
+[data-theme="light"] .moon{display:block}[data-theme="light"] .sun{display:none}
+[data-theme="dark"] .moon{display:none}[data-theme="dark"] .sun{display:block}
+@media(max-width:720px){.nav nav{gap:12px}.nav nav a{letter-spacing:.05em}}
+@media(max-width:560px){.brand span:not(.mark){display:none}}
+
+/* hero */
+.hero{padding:clamp(64px,10vw,140px) 0 clamp(48px,7vw,96px);border-bottom:1px solid var(--rule)}
+.hero h1{font:400 var(--step-4)/1.06 var(--serif);letter-spacing:-.015em;max-width:15ch;text-wrap:balance}
+.hero h1 em{font-style:italic;color:var(--cat-b-deep)}
+.hero .lede{margin-top:28px;max-width:52ch;font-size:var(--step-1);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.hero-meta{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap;align-items:center}
+.hero-dots{display:flex;gap:8px}
+.hero-dots i{width:16px;height:16px;border-radius:50%}
+.hero-dots i:nth-child(1){background:var(--cat-a)}
+.hero-dots i:nth-child(2){background:var(--cat-b)}
+.hero-dots i:nth-child(3){background:var(--cat-c)}
+
+/* section chrome */
+section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--rule)}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head .num{font:400 var(--step-1)/1 var(--serif);font-style:italic;color:var(--cat-b-deep)}
+.sec-head h2{font:400 var(--step-3)/1.1 var(--serif);letter-spacing:-.01em}
+
+/* games */
+.game-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px)}
+/* The shelf spanned the full row while there were two titles; with three it
+   takes the fourth cell so the grid closes as a 2x2 instead of leaving a hole. */
+.game-grid .shelf{grid-column:auto}
+@media(max-width:860px){.game-grid{grid-template-columns:1fr}}
+.game-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+/* STU-3226: no aspect-ratio here on purpose — each box carries its own, derived from its image by ratio(). A house default would silently crop the next capsule that arrives at a new shape, which is the bug this replaced. A missing inline ratio collapses the box, which is loud. */
+.game-art{background:var(--paper-2);border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
+.game-art img{width:100%;height:100%;object-fit:cover;display:block}
+.game-body{padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:16px;flex:1}
+.game-kicker{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.game-body h3{font:400 var(--step-2)/1.1 var(--serif)}
+.game-body .logline{font:italic 400 var(--step-1)/1.4 var(--serif);color:var(--ink-2);text-wrap:pretty}
+.game-body p{color:var(--ink-2);text-wrap:pretty}
+.game-facts{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font:500 12px/1 var(--mono);letter-spacing:.06em;padding:7px 12px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2)}
+.cta-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding-top:8px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 var(--step--1)/1 var(--sans);letter-spacing:.02em;background:var(--btn);color:var(--btn-ink);padding:15px 26px;border:none;border-radius:999px;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px);color:var(--btn-ink)}
+.btn .dot{width:8px;height:8px;border-radius:50%;background:var(--btn-ink)}
+.btn.alt{background:var(--btn-2)}
+.shelf{border:1px solid var(--rule);border-radius:6px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:18px;background:var(--paper-2)}
+.shelf-spines{display:flex;gap:8px;align-items:flex-end;height:110px}
+.shelf-spines b{flex:1;border-radius:3px 3px 0 0;display:block}
+.shelf h3{font:400 var(--step-2)/1.15 var(--serif)}
+.shelf p{color:var(--ink-2);text-wrap:pretty}
+
+/* mobile store badges (STU-015) — hidden until the store listings are public */
+.store-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.store-row .label{white-space:nowrap}
+.badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.storebadge{display:inline-flex;line-height:0;border-radius:7px;transition:transform .15s}
+.storebadge:hover{transform:translateY(-2px)}
+.storebadge svg{display:block;height:40px;width:auto}
+
+/* studio */
+.studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+@media(max-width:860px){.studio-grid{grid-template-columns:1fr}}
+.studio-grid .big{font:400 var(--step-2)/1.35 var(--serif);text-wrap:pretty}
+.studio-grid .big em{font-style:italic;color:var(--cat-a-deep)}
+.craft{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule)}
+.craft > div{padding:20px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:baseline}
+.craft .label{padding-top:4px}
+.craft h4{font:600 var(--step-0)/1.3 var(--sans);margin-bottom:6px}
+.craft p{color:var(--ink-2);font-size:var(--step--1);line-height:1.55;text-wrap:pretty}
+
+/* newsletter */
+.news-grid{display:grid;grid-template-columns:1fr;gap:22px}
+@media(min-width:800px){.news-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.news-grid .big{font:400 var(--step-2)/1.35 var(--serif);text-wrap:pretty}
+.news-grid .big em{font-style:italic;color:var(--cat-b-deep)}
+.news-grid .sub{color:var(--ink-2);max-width:44ch;margin-bottom:18px;text-wrap:pretty}
+.signup{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+.signup input[type=email]{flex:1 1 220px;min-width:0;padding:14px 16px;border-radius:8px;border:1px solid var(--rule);background:var(--card);color:var(--ink);font:inherit}
+.signup input[type=email]:focus{outline:2px solid var(--cat-a-deep);outline-offset:1px}
+.signup button,.signup a.go{flex:0 0 auto;display:inline-flex;align-items:center;gap:.5em;text-decoration:none;font:600 var(--step--1)/1 var(--sans);letter-spacing:.02em;background:var(--btn-2);color:var(--btn-ink);padding:15px 26px;border:none;border-radius:999px;cursor:pointer;transition:transform .15s}
+.signup button:hover,.signup a.go:hover{transform:translateY(-2px);color:var(--btn-ink)}
+.signup .tiny{flex-basis:100%;font-size:12px;color:var(--ink-2);line-height:1.5;margin:0}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* contact */
+.contact-inner{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.contact-inner .mailto{font:400 var(--step-3)/1.1 var(--serif);text-decoration:none;border-bottom:2px solid var(--cat-b);word-break:break-all}
+.contact-inner .mailto:hover{border-bottom-color:var(--cat-a);color:var(--ink)}
+
+/* footer */
+footer{padding:40px 0 56px}
+.foot{display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.foot small,.foot .label{font-size:12px}
+.disclosure{margin-top:16px;font-size:12px;color:var(--ink-2);max-width:66ch;line-height:1.6}
+
+/* social links */
+.social{display:flex;align-items:center;gap:14px}
+.social .social-label{font:500 var(--step--1)/1 var(--mono);letter-spacing:.1em;color:var(--ink-2)}
+.social a{color:var(--ink-2);display:inline-flex;align-items:center;justify-content:center;transition:color .15s ease,transform .15s ease}
+.social a:hover{color:var(--cat-b-deep);transform:translateY(-1px)}
+/* header variant: compact icons, hairline-separated from the nav, hidden on narrow screens */
+.social--head{gap:13px;padding-left:20px;border-left:1px solid var(--rule)}
+.social--head a svg{width:15px;height:15px}
+@media(max-width:720px){.social--head{display:none}}
+
+.fade{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.fade.d1{animation-delay:.08s}.fade.d2{animation-delay:.16s}.fade.d3{animation-delay:.24s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.fade{animation:none;opacity:1;transform:none}}
+
+/* ---- press page ---- */
+main{counter-reset:sec}
+section[id]{scroll-margin-top:72px}
+.backlink{display:inline-flex;align-items:center;gap:.5em;font:500 var(--step--1)/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;margin-bottom:26px}
+.backlink:hover{color:var(--ink)}
+.eyebrow{font:500 var(--step--1)/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.press-hero{padding:clamp(40px,7vw,88px) 0 clamp(28px,5vw,56px);border-bottom:1px solid var(--rule)}
+.press-hero .eyebrow{display:block;margin-bottom:16px}
+.press-hero h1{font:400 var(--step-4)/1.06 var(--serif);letter-spacing:-.015em;max-width:16ch;text-wrap:balance}
+.press-hero .lede{margin-top:24px;max-width:58ch;font-size:var(--step-1);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+/* per-title press: hero title nav + per-title header band (STU-008, multi-title /press) */
+.titlenav{margin-top:clamp(28px,5vw,44px);display:flex;gap:16px;flex-wrap:wrap}
+.titlenav a{display:inline-flex;align-items:baseline;gap:10px;font:400 var(--step-2)/1 var(--serif);text-decoration:none;color:var(--ink);border:1px solid var(--rule);border-radius:8px;padding:16px 26px;background:var(--card);transition:border-color .15s,transform .15s}
+.titlenav a:hover{border-color:var(--cat-b);transform:translateY(-2px);color:var(--ink)}
+.titlenav a span{font:500 var(--step--1)/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.titleband{padding:clamp(48px,7vw,88px) 0 0;border-top:1px solid var(--rule)}
+.titlehead{font:400 var(--step-4)/1.05 var(--serif);letter-spacing:-.015em;margin-top:10px}
+section[id]{scroll-margin-top:80px}
+.pressband{margin-top:clamp(28px,5vw,48px);border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--paper-2)}  /* STU-3226: ratio is inline, from the asset */
+.pressband img{width:100%;height:100%;object-fit:cover;display:block}
+.sechead{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(28px,4vw,44px)}
+.sechead h2{font:400 var(--step-3)/1.1 var(--serif);letter-spacing:-.01em}
+.sechead h2::before{counter-increment:sec;content:"0" counter(sec) "\2002";font-style:italic;color:var(--ink-2);font-size:.68em}
+.sechead .note{margin-left:auto;align-self:center;font:500 var(--step--1)/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.spec{border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--card)}
+.spec .row{display:grid;grid-template-columns:1fr;gap:4px;padding:15px clamp(16px,2.4vw,24px);border-top:1px solid var(--rule)}
+.spec .row:first-child{border-top:none}
+@media(min-width:620px){.spec .row{grid-template-columns:210px 1fr;gap:24px;align-items:baseline}}
+.spec .k{font:500 var(--step--1)/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.spec .v{color:var(--ink)}
+.spec .v a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--cat-b)}
+.spec .v a:hover{color:var(--cat-b-deep)}
+.copy-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.cblock{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:clamp(20px,3vw,30px)}
+.cblock .k{display:block;font:500 var(--step--1)/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px}
+.cblock p{color:var(--ink-2);text-wrap:pretty}
+.cblock p + p{margin-top:14px}
+.cblock.hook{border-left:3px solid var(--cat-b)}
+.cblock .oneliner{font:italic 400 var(--step-2)/1.3 var(--serif);color:var(--ink);text-wrap:balance}
+.featlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.featlist li{position:relative;padding-left:24px;color:var(--ink-2);text-wrap:pretty}
+.featlist li::before{content:"\25B8";position:absolute;left:0;top:.05em;color:var(--cat-b-deep)}
+.featlist li b{color:var(--ink);font-weight:600}
+.pgallery{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:640px){.pgallery{grid-template-columns:repeat(3,1fr)}}
+.pgallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;border:1px solid var(--rule);border-radius:6px;display:block;background:var(--paper-2)}
+.assetnote{margin-top:18px;color:var(--ink-2);font-size:var(--step--1);max-width:64ch;line-height:1.6}
+.assetnote a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--cat-b)}
+.credo{font:500 var(--step--1)/1.7 var(--mono);letter-spacing:.02em;color:var(--ink-2);border-left:3px solid var(--cat-c);padding-left:14px}
+.contact{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.contact .big{font:400 var(--step-3)/1.1 var(--serif);letter-spacing:-.01em}
+.contact a.mail{font:400 var(--step-3)/1.1 var(--serif);text-decoration:none;border-bottom:2px solid var(--cat-b);word-break:break-all}
+.contact a.mail:hover{border-bottom-color:var(--cat-a)}</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="3Cats Studio home"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><span>3Cats Studio</span></a>
+    <nav aria-label="Primary">
+      <a href="/#games">Games</a>
+      <a href="/#studio">Studio</a>
+      <a href="/press/">Press</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <button id="themeBtn" aria-label="Toggle light or dark theme"><span class="moon" aria-hidden="true">&#9680;</span><span class="sun" aria-hidden="true">&#9681;</span></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="press-hero">
+    <div class="wrap">
+      <a class="backlink fade" href="/">&larr; 3Cats Studio</a>
+      <p class="eyebrow fade">For developers</p>
+      <h1 class="fade d1">The Game Studio Kit.</h1>
+      <p class="lede fade d2">There are a hundred guides on how to make a game. Almost none of them tell you what happens after it works &mdash; the store page, the capsule art that gets your wordmark sliced in half, the trailer a platform quietly refuses, the press mail that dies in an ad-sales inbox. This is the system we use for both halves, handed to your coding agent instead of to your reading list.</p>
+      <p class="fade d2"><a class="btn" href="https://omurden.gumroad.com/l/game-studio-kit" target="_blank" rel="noopener noreferrer"><span class="dot" aria-hidden="true"></span>Get it on Gumroad</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="inside">
+    <div class="wrap">
+      <div class="sechead"><h2>What&rsquo;s inside</h2><span class="note">files, not a course</span></div>
+      <div class="cblock hook">
+        <p><strong>Steam &middot; the App Store &middot; Google Play &middot; itch &mdash; from one codebase.</strong> The project inside packages for desktop with Electron and for iOS and Android with Capacitor, and there is a release playbook for each store &mdash; because the thing that catches people out is never the code, it is the fourth different review process asking for the ninth different asset size.</p>
+      </div>
+      <div class="copy-grid">
+        <p><strong>Nineteen operational playbooks.</strong> Steam retail end to end, Google Play, the App Store, capsule and trailer capture, press outreach, curators and keys, festivals, soundtrack revenue, communities and social, asset licensing, QA, and a 37-item release test script that says how each item <em>fails</em>.</p>
+        <p><strong>Twenty-one runnable checks.</strong> Not advice &mdash; commands that exit non-zero, so a mistake stops at your terminal instead of at a store&rsquo;s review queue. Several print what they structurally cannot see on every run, because a check with nothing to check reads as green.</p>
+        <p><strong>A game project that already works.</strong> Install it, test it and package it on day one &mdash; before you write a line of your own game.</p>
+        <p><strong>And it keeps growing.</strong> Every future version is included. When we learn something expensive, it goes into the playbook it belongs in and lands in your library.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="setup">
+    <div class="wrap">
+      <div class="sechead"><h2>Or we set it up with you</h2><span class="note">agent-system setup</span></div>
+      <div class="cblock hook">
+        <p>Bought the kit and would rather not do the wiring? <strong>We install the system in your own project.</strong> Your projects registered, the checks fitted to what you actually ship, the release discipline wired into your own repo, and your agent pointed at it &mdash; then handed over, so it runs without us.</p>
+      </div>
+      <div class="copy-grid">
+        <p><strong>What it is not.</strong> We do not build your game. We are a small studio with our own release calendar, and a job that takes weeks would come out of it &mdash; so we do the part that is short, repeatable, and the thing we are actually best at.</p>
+        <p><strong>How to start.</strong> Tell us what you are making, where it is now, and where you want it sold. If it is a fit we will say so, and if it is not we will say that too.</p>
+      </div>
+      <p style="margin-top:1.4rem"><a class="mailto" href="mailto:info@3cats.studio?subject=Agent-system%20setup">info@3cats.studio</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="who">
+    <div class="wrap">
+      <div class="sechead"><h2>Who made it</h2><span class="note">a studio that ships games</span></div>
+      <div class="cblock hook">
+        <p>Every playbook here was written from something that actually happened while shipping ours, including the expensive parts: a store page that claimed one thing while the credits filed with the platform said another, endings that drew the wrong picture, a trailer a transcoder refused, a build certified by the wrong test. Every one of those is a page in there now, so it costs you an afternoon instead of a launch. <a href="/#games">See what we make &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top" aria-label="3Cats Studio home"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><span>3Cats Studio</span></a>
+    <div class="social">
+        <span class="social-label">@3catsgames</span>
+        <a href="https://x.com/3catsgames" target="_blank" rel="noopener noreferrer" aria-label="3Cats Studio on X">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7.1l-5.5-7.2L4.3 22H1.2l8.1-9.3L1 2h7.3l5 6.6L18.9 2Zm-1.2 18h1.9L6.4 4H4.4l13.3 16Z"/></svg>
+        </a>
+        <a href="https://instagram.com/3catsgames" target="_blank" rel="noopener noreferrer" aria-label="3Cats Studio on Instagram">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@3catsgames" target="_blank" rel="noopener noreferrer" aria-label="3Cats Studio on TikTok">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M16.6 2h-3.2v13.7a3 3 0 1 1-2.4-2.94V9.4a6.1 6.1 0 1 0 5.6 6.08V8.2a7.4 7.4 0 0 0 4.4 1.5V6.5a4.2 4.2 0 0 1-4.4-4.1V2Z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@3catsgames" target="_blank" rel="noopener noreferrer" aria-label="3Cats Studio on YouTube">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.05v-6.1L15.2 12 10 15.05Z"/></svg>
+        </a>
+        <a href="https://discord.gg/DtU2RcNDy" target="_blank" rel="noopener noreferrer" aria-label="Join the 3Cats Studio Discord">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.05 19.9 19.9 0 0 0 6 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.1 13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12c.13-.1.25-.2.37-.3a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.3a.08.08 0 0 1-.01.13c-.6.35-1.22.64-1.87.89a.08.08 0 0 0-.04.11c.36.7.77 1.36 1.22 2a.08.08 0 0 0 .08.02 19.8 19.8 0 0 0 6.02-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg>
+        </a>
+      </div>
+    <span class="label">3cats.studio</span>
+    <a class="label" href="/privacy/" style="text-decoration:none">Privacy</a>
+    <small class="label">&copy; 2026 3Cats Studio</small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement,KEY="3cats-theme";
+  try{
+    var saved=localStorage.getItem(KEY);
+    if(saved==="light"||saved==="dark"){root.dataset.theme=saved;}
+    /* default is always light; dark is opt-in via the toggle */
+  }catch(e){}
+  document.getElementById("themeBtn").addEventListener("click",function(){
+    var next=root.dataset.theme==="dark"?"light":"dark";
+    root.dataset.theme=next;
+    try{localStorage.setItem(KEY,next);}catch(e){}
+  });
+})();
+</script>
+
+</body>
+</html>
