@@ -151,6 +151,9 @@ section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--rule)}
 /* mobile store badges (STU-015) — hidden until the store listings are public */
 .store-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .store-row .label{white-space:nowrap}
+/* soundtrack link under a game's buttons (STU-8217, D-375): small, a link not a card */
+.ost-row{margin:10px 0 0;font:500 13px/1.4 var(--mono);letter-spacing:.04em}
+.ost-row a{color:var(--ink-2)}
 .badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .storebadge{display:inline-flex;line-height:0;border-radius:7px;transition:transform .15s}
 .storebadge:hover{transform:translateY(-2px)}
@@ -463,6 +466,7 @@ footer{border-top:2px solid var(--ink)}
                 <text x="34" y="16.5" fill="#fff" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="6.5" letter-spacing=".3">Download on the</text>
                 <text x="33.4" y="30" fill="#fff" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="15" font-weight="600">App Store</text>
               </svg></a></div></div>
+            <p class="ost-row"><a class="ost-link" data-appid="5026720" href="https://store.steampowered.com/app/5026720/" target="_blank" rel="noopener noreferrer">Soundtrack</a></p>
             <p style="margin-top:14px;color:var(--ink-2);font-size:12px;line-height:1.6">A work of fiction &mdash; depictions of trading and markets are dramatic fiction, not financial advice.</p>
           </div>
         </article>
@@ -484,6 +488,7 @@ footer{border-top:2px solid var(--ink)}
             <div class="cta-row">
               <a class="btn" href="https://store.steampowered.com/app/5004180/" target="_blank" rel="noopener noreferrer"><span class="dot" aria-hidden="true"></span>Wishlist on Steam</a>
             </div>
+            <p class="ost-row"><a class="ost-link" data-appid="5308710" href="https://store.steampowered.com/app/5308710/" target="_blank" rel="noopener noreferrer">Soundtrack &middot; Coming Soon</a></p>
           </div>
         </article>
         <article class="game-card" id="dear-nobody">
