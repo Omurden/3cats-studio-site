@@ -150,6 +150,9 @@ section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--rule)}
 /* mobile store badges (STU-015) — hidden until the store listings are public */
 .store-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .store-row .label{white-space:nowrap}
+/* soundtrack link under a game's buttons (STU-8217, D-375): small, a link not a card */
+.ost-row{margin:10px 0 0;font:500 13px/1.4 var(--mono);letter-spacing:.04em}
+.ost-row a{color:var(--ink-2)}
 .badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .storebadge{display:inline-flex;line-height:0;border-radius:7px;transition:transform .15s}
 .storebadge:hover{transform:translateY(-2px)}
@@ -452,8 +455,8 @@ footer{border-top:2px solid var(--ink)}
     <div class="wrap">
       <div class="sechead"><h2>Where we are weak</h2><span class="note">said first, not on request</span></div>
       <div class="cblock hook">
-        <p><em>All Time High</em> shipped on 19 August 2026. As read from our own Steamworks dashboard on 21 September 2026 (day 33): 9 units sold on Steam (1 returned) against 116 wishlists. Sales and wishlists sit behind our own login-gated dashboard, so we are telling you rather than asking you to find it. The one number in that read anyone can check without a login: <a href="https://store.steampowered.com/app/4944370/" target="_blank" rel="noopener noreferrer">1 review, on the public store page</a>.</p>
-        <p>A studio that finishes five games and sells single-digit copies of the one it shipped does not have a production problem. It has a distribution one &mdash; and that is the only thing we are asking for.</p>
+        <p><em>All Time High</em> shipped on 19 August 2026. As read from our own Steamworks dashboard on 21 September 2026 (day 33), it had 116 wishlists. Wishlists sit behind our own login-gated dashboard, so we are telling you rather than asking you to find it. The one number in that read anyone can check without a login: <a href="https://store.steampowered.com/app/4944370/" target="_blank" rel="noopener noreferrer">1 review, on the public store page</a>.</p>
+        <p>A studio that finishes five games and still struggles to be found does not have a production problem. It has a distribution one &mdash; and that is the only thing we are asking for.</p>
       </div>
     </div>
   </section>
