@@ -150,6 +150,9 @@ section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--rule)}
 /* mobile store badges (STU-015) — hidden until the store listings are public */
 .store-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .store-row .label{white-space:nowrap}
+/* soundtrack link under a game's buttons (STU-8217, D-375): small, a link not a card */
+.ost-row{margin:10px 0 0;font:500 13px/1.4 var(--mono);letter-spacing:.04em}
+.ost-row a{color:var(--ink-2)}
 .badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .storebadge{display:inline-flex;line-height:0;border-radius:7px;transition:transform .15s}
 .storebadge:hover{transform:translateY(-2px)}
@@ -422,7 +425,7 @@ footer{border-top:2px solid var(--ink)}
   <section class="block" id="concept">
     <div class="wrap">
       <div class="sechead"><h2>The concept</h2><span class="note">what the game is</span></div>
-      <div class="cblock hook"><p>You are the new night clerk in a city that produces more bodies than it can explain. Read the file &mdash; death certificate, transfer manifest, personal effects, a polaroid. Names, weights, causes, signatures. <strong>One of them may be lying.</strong> Then examine what came through the hatch: scale, measuring tape, thermometer, UV lamp, and a stethoscope for the nights when you need to be certain.</p><p>This is a gatekeeper horror game about <em>procedure</em> &mdash; about a form that is nearly right, a weight that is nearly correct, and a rulebook that keeps growing pages you would rather not have read. <strong>Rule R-103 arrives on the first night and is the whole game in one line:</strong> <em>quarantine any intake presenting vital signs. Do not open the bag. Do not speak to it.</em></p><p>The horror is not in what you see; it is in what you signed. Errors are deducted from wages. Supervisor calls are finite. And some of what you sign in does not stay signed in.</p>
+      <div class="cblock hook"><p>You are the new night clerk at a municipal morgue. Read the file &mdash; the death certificate and the transfer manifest. Names, weights, heights, dates, signatures. <strong>One of them may be lying.</strong> Then examine what came through the hatch: scale, measuring tape, thermometer, UV lamp, and a stethoscope for the nights when you need to be certain.</p><p>This is a gatekeeper horror game about <em>procedure</em> &mdash; about a form that is nearly right, a weight that is nearly correct, and a rulebook that keeps growing pages you would rather not have read. <strong>Rule R-103 arrives on the first night and is the whole game in one line:</strong> <em>quarantine any intake presenting vital signs. Do not open the bag. Do not speak to it.</em></p><p>The horror is not in what you see; it is in what you signed. Errors are deducted from wages. Supervisor calls are finite. And some of what you sign in does not stay signed in.</p>
       </div>
     </div>
   </section>
