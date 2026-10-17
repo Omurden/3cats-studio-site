@@ -150,6 +150,9 @@ section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--rule)}
 /* mobile store badges (STU-015) — hidden until the store listings are public */
 .store-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .store-row .label{white-space:nowrap}
+/* soundtrack link under a game's buttons (STU-8217, D-375): small, a link not a card */
+.ost-row{margin:10px 0 0;font:500 13px/1.4 var(--mono);letter-spacing:.04em}
+.ost-row a{color:var(--ink-2)}
 .badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .storebadge{display:inline-flex;line-height:0;border-radius:7px;transition:transform .15s}
 .storebadge:hover{transform:translateY(-2px)}
@@ -421,7 +424,7 @@ footer{border-top:2px solid var(--ink)}
   <section class="block" id="concept">
     <div class="wrap">
       <div class="sechead"><h2>The concept</h2><span class="note">what the game is</span></div>
-      <div class="cblock hook"><p>A woman sits at a censor&rsquo;s desk far behind the front of a war the game never shows you. The men are gone; the sorting hall is staffed by women who read other people&rsquo;s mail for a living. Across her desk pass the letters of two strangers &mdash; pen-pals who have never once met and know each other only through what they send.</p><p>She holds a stamp, a pen and a book of regulations, and it is her work to strike out anything a soldier must not know. But these two have nothing <em>but</em> the letters. <strong>Cross out a line and it is gone from their love, not just from the page.</strong> What she leaves standing is what their love is allowed to become.</p><p>Then the correspondence starts to go wrong. A letter answers a question she only asked with her pen. A line struck weeks ago comes back, uncrossed, in another hand. And one thread stops writing to the front at all &mdash; and starts writing to <strong>her</strong>. The game never says whether the paper is haunted or whether she is coming apart at her own quiet desk.</p>
+      <div class="cblock hook"><p>A woman sits at a censor&rsquo;s desk far behind the front of a war the game never shows you. The men are gone; the sorting hall is staffed by women who read other people&rsquo;s mail for a living. Across her desk pass the letters of two strangers &mdash; pen-pals who have never once met and know each other only through what they send.</p><p>She holds a stamp, a pen and a card of regulations, and it is her work to strike out anything a soldier must not know. But these two have nothing <em>but</em> the letters. <strong>Cross out a line and it is gone from their love, not just from the page.</strong> What she leaves standing is what their love is allowed to become.</p><p>Then the correspondence starts to go wrong. A letter answers a question she only asked in her head. A line struck weeks ago comes back, uncrossed, in another hand. And one thread stops writing to the other &mdash; and starts writing to <strong>her</strong>. The game never says whether the paper is haunted or whether she is coming apart at her own quiet desk.</p>
       </div>
     </div>
   </section>
@@ -440,15 +443,15 @@ footer{border-top:2px solid var(--ink)}
         </div>
         <div class="cblock">
           <span class="k">You may keep one line</span>
-          <p>A copybook saves a single line from a letter before it leaves your hands forever. Some saved lines come back to matter.</p>
+          <p>A copybook saves a single line from some letters before they leave your hands forever. Some saved lines come back to matter.</p>
         </div>
         <div class="cblock">
           <span class="k">Stamp, and it is filed</span>
-          <p>The ruling moves two fragile things at once: the bond between the two writers, and how closely the office is watching you.</p>
+          <p>Your rulings move two fragile things: the bond between the two writers, and how closely the office is watching you.</p>
         </div>
         <div class="cblock">
           <span class="k">The next letter is shaped by it</span>
-          <p>Not a branch you pick from a menu &mdash; the correspondence answers what you left standing. Later the game hands you a pen of your own, and a few words you may leave in reply.</p>
+          <p>Not a branch you pick from a menu &mdash; the correspondence answers what you left standing. Later you learn to leave a few words standing in a struck line, in reply.</p>
         </div>
       </div>
       <p class="note">The restraint is the mechanic. The most intimate decisions in the game are the ones you cross out.</p>
