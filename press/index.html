@@ -283,7 +283,7 @@ header{background:var(--paper);backdrop-filter:none;border-bottom:2px solid var(
 .nav nav a{font:500 1rem/1 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink)}
 .nav nav a:hover{color:var(--ink-2)}
 @media(max-width:720px){.nav nav a{font-size:.9rem}}
-@media(max-width:640px){.nav{gap:14px}.nav nav{gap:14px}.nav nav a[href="#schedule"],.nav nav a[href="#developers"],.nav nav a[href="#contact"]{display:none}}
+@media(max-width:640px){.nav{gap:14px}.nav nav{gap:14px}.nav nav a[href="#schedule"],.nav nav a[href="#demos"],.nav nav a[href="#developers"],.nav nav a[href="#contact"]{display:none}}
 @media(max-width:560px){.brand span:not(.mark){display:inline}}
 #themeBtn{border-radius:0;width:44px;height:44px;background:transparent;border:1px solid var(--ink)}
 #themeBtn:hover{transform:none}
@@ -309,6 +309,14 @@ section{border-bottom:none;padding:clamp(40px,6vw,72px) 0}
 .sec-head .aside{color:var(--ink-2);max-width:44ch;font-size:var(--step-0)}
 
 .no{font:500 var(--step--1)/1 var(--mono);letter-spacing:.04em}
+.demos{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.demos li{display:grid;grid-template-columns:76px minmax(0,1.1fr) minmax(0,1.6fr) auto;gap:6px 16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--rule)}
+.demos .no{font:400 15px/1.3 var(--mono)}
+.demos .dt{font:500 1.35rem/1.2 var(--serif);letter-spacing:-.01em}
+.demos .dt a{text-decoration:none}
+.demos .dl{color:var(--ink-2);font-size:15px;line-height:1.5}
+.demos .dg{font-weight:500;white-space:nowrap}
+@media(max-width:760px){.demos li{grid-template-columns:40px minmax(0,1fr);padding:16px 0}.demos .dl,.demos .dg{grid-column:2}.demos .dt{font-size:1.15rem}.demos .dg{white-space:normal}}
 .sched{width:100%;border-collapse:collapse}
 .sched thead th{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);text-align:left;padding:0 16px 12px 0;border-bottom:1px solid var(--ink)}
 .sched td{padding:18px 16px 18px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
@@ -524,7 +532,7 @@ footer{border-top:2px solid var(--ink)}
         <div class="row"><span class="k">Price</span><span class="v">$7.99 USD</span></div>
         <div class="row"><span class="k">Languages</span><span class="v">English &middot; T&uuml;rk&ccedil;e &middot; &#31616;&#20307;&#20013;&#25991; &middot; &#54620;&#44397;&#50612; &middot; &#26085;&#26412;&#35486; &middot; Deutsch &middot; Espa&ntilde;ol (Espa&ntilde;a) &middot; Espa&ntilde;ol (LatAm) &middot; Fran&ccedil;ais &middot; &#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; &middot; Portugu&ecirc;s-BR (11)</span></div>
         <div class="row"><span class="k">Length</span><span class="v">2&ndash;4 h &middot; one-shot novella &middot; 10 chapters &middot; 6 endings</span></div>
-        <div class="row"><span class="k">Demo</span><span class="v">No public demo &mdash; press &amp; creators get full embargo keys on request</span></div>
+        <div class="row"><span class="k">Demo</span><span class="v">Free demo live on Steam since Oct 18, 2026 (in Steam Next Fest until Oct 26) &mdash; <a href="https://store.steampowered.com/app/4957320/" target="_blank" rel="noopener noreferrer">download from the store page</a>. Press &amp; creators can also get full embargo keys on request</span></div>
         <div class="row"><span class="k">Store</span><span class="v"><a href="https://store.steampowered.com/app/4957320/" target="_blank" rel="noopener noreferrer">store.steampowered.com/app/4957320</a></span></div>
         <div class="row"><span class="k">Website</span><span class="v"><a href="/">3cats.studio</a></span></div>
         <div class="row"><span class="k">Press contact</span><span class="v"><a href="mailto:info@3cats.studio">info@3cats.studio</a></span></div>
@@ -608,7 +616,7 @@ footer{border-top:2px solid var(--ink)}
         <div class="row"><span class="k">Price</span><span class="v">$9.99 USD</span></div>
         <div class="row"><span class="k">Languages</span><span class="v">English &middot; T&uuml;rk&ccedil;e &middot; &#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940; &middot; Fran&ccedil;ais &middot; Deutsch &middot; Espa&ntilde;ol (Espa&ntilde;a) &middot; Espa&ntilde;ol (LatAm) &middot; Italiano &middot; &#26085;&#26412;&#35486; &middot; &#54620;&#44397;&#50612; &middot; Portugu&ecirc;s-BR &middot; &#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; &middot; &#31616;&#20307;&#20013;&#25991; (13 at launch)</span></div>
         <div class="row"><span class="k">Structure</span><span class="v">4 testimonies &middot; 5&ndash;6 endings each &middot; a frame story that binds them</span></div>
-        <div class="row"><span class="k">Demo</span><span class="v">Public demo planned for Steam Next Fest, Oct 19&ndash;26, 2026</span></div>
+        <div class="row"><span class="k">Demo</span><span class="v">Free demo live on Steam since Oct 18, 2026 (in Steam Next Fest until Oct 26) &mdash; <a href="https://store.steampowered.com/app/5004180/" target="_blank" rel="noopener noreferrer">download from the store page</a></span></div>
         <div class="row"><span class="k">Store</span><span class="v"><a href="https://store.steampowered.com/app/5004180/" target="_blank" rel="noopener noreferrer">store.steampowered.com/app/5004180</a></span></div>
         <div class="row"><span class="k">Website</span><span class="v"><a href="/">3cats.studio</a></span></div>
         <div class="row"><span class="k">Press contact</span><span class="v"><a href="mailto:info@3cats.studio">info@3cats.studio</a></span></div>
@@ -694,7 +702,7 @@ footer{border-top:2px solid var(--ink)}
         <div class="row"><span class="k">Languages</span><span class="v">13 &mdash; English, French, German, Italian, Polish, Spanish (Spain &amp; Latin America), Japanese, Korean, Portuguese (Brazil), Russian, Simplified Chinese, T&uuml;rk&ccedil;e</span></div>
         <div class="row"><span class="k">Structure</span><span class="v">Seven nights &middot; 45 intakes &middot; four endings</span></div>
         <div class="row"><span class="k">Genre</span><span class="v">Psychological horror &middot; gatekeeper / inspection</span></div>
-        <div class="row"><span class="k">Demo</span><span class="v">Public demo planned for Steam Next Fest, Oct 19&ndash;26, 2026</span></div>
+        <div class="row"><span class="k">Demo</span><span class="v">Free demo live on Steam since Oct 18, 2026 (in Steam Next Fest until Oct 26) &mdash; <a href="https://store.steampowered.com/app/5036870/" target="_blank" rel="noopener noreferrer">download from the store page</a></span></div>
         <div class="row"><span class="k">Store</span><span class="v"><a href="https://store.steampowered.com/app/5036870/" target="_blank" rel="noopener noreferrer">Live on Steam</a></span></div>
         <div class="row"><span class="k">Website</span><span class="v"><a href="/">3cats.studio</a></span></div>
         <div class="row"><span class="k">Press contact</span><span class="v"><a href="mailto:info@3cats.studio">info@3cats.studio</a></span></div>
@@ -797,7 +805,7 @@ footer{border-top:2px solid var(--ink)}
         <div class="row"><span class="k">Setting</span><span class="v">London, 1994 &middot; single-player</span></div>
         <div class="row"><span class="k">Structure</span><span class="v">A shop, the callers who knock at it, and a ledger that remembers every one</span></div>
         <div class="row"><span class="k">Genre</span><span class="v">Cozy simulation &middot; story rich &middot; with a psychological-horror thread</span></div>
-        <div class="row"><span class="k">Demo</span><span class="v">Planned for Steam Next Fest, Oct 19&ndash;26, 2026 &mdash; confirmed at the Sep 28 go/no-go</span></div>
+        <div class="row"><span class="k">Demo</span><span class="v">Free demo live on Steam since Oct 18, 2026 (in Steam Next Fest until Oct 26) &mdash; <a href="https://store.steampowered.com/app/5053460/" target="_blank" rel="noopener noreferrer">download from the store page</a></span></div>
         <div class="row"><span class="k">Store</span><span class="v"><a href="https://store.steampowered.com/app/5053460/" target="_blank" rel="noopener noreferrer">Live on Steam</a></span></div>
         <div class="row"><span class="k">Website</span><span class="v"><a href="/">3cats.studio</a></span></div>
         <div class="row"><span class="k">Press contact</span><span class="v"><a href="mailto:info@3cats.studio">info@3cats.studio</a></span></div>
@@ -872,7 +880,7 @@ footer{border-top:2px solid var(--ink)}
         <div class="row"><span class="k">Setting</span><span class="v">An emptied office floor &middot; single-player</span></div>
         <div class="row"><span class="k">Structure</span><span class="v">Ten business days of email &mdash; you choose what you say, then choose who sees it, and the routing is permanent</span></div>
         <div class="row"><span class="k">Genre</span><span class="v">Adventure &middot; story rich &middot; psychological horror in an inbox</span></div>
-        <div class="row"><span class="k">Demo</span><span class="v">Planned for Steam Next Fest, Oct 19&ndash;26, 2026</span></div>
+        <div class="row"><span class="k">Demo</span><span class="v">Free demo live on Steam since Oct 18, 2026 (in Steam Next Fest until Oct 26) &mdash; <a href="https://store.steampowered.com/app/5070170/" target="_blank" rel="noopener noreferrer">download from the store page</a></span></div>
         <div class="row"><span class="k">Store</span><span class="v"><a href="https://store.steampowered.com/app/5070170/" target="_blank" rel="noopener noreferrer">Live on Steam</a></span></div>
         <div class="row"><span class="k">Website</span><span class="v"><a href="/">3cats.studio</a></span></div>
         <div class="row"><span class="k">Press contact</span><span class="v"><a href="mailto:info@3cats.studio">info@3cats.studio</a></span></div>
@@ -921,7 +929,7 @@ footer{border-top:2px solid var(--ink)}
         <div class="row"><span class="k">Setting</span><span class="v">A half-empty harbour town &middot; single-player</span></div>
         <div class="row"><span class="k">Structure</span><span class="v">A desk that opens at nine, the townspeople who reach it, and a basement file that explains why the town emptied</span></div>
         <div class="row"><span class="k">Genre</span><span class="v">Simulation &middot; adventure &middot; story rich</span></div>
-        <div class="row"><span class="k">Demo</span><span class="v">Not yet announced</span></div>
+        <div class="row"><span class="k">Demo</span><span class="v">Free demo live on Steam since Oct 18, 2026 (in Steam Next Fest until Oct 26) &mdash; <a href="https://store.steampowered.com/app/5070780/" target="_blank" rel="noopener noreferrer">download from the store page</a></span></div>
         <div class="row"><span class="k">Store</span><span class="v"><a href="https://store.steampowered.com/app/5070780/" target="_blank" rel="noopener noreferrer">Live on Steam</a></span></div>
         <div class="row"><span class="k">Website</span><span class="v"><a href="/">3cats.studio</a></span></div>
         <div class="row"><span class="k">Press contact</span><span class="v"><a href="mailto:info@3cats.studio">info@3cats.studio</a></span></div>
@@ -971,7 +979,7 @@ footer{border-top:2px solid var(--ink)}
         <div class="row"><span class="k">Structure</span><span class="v">A season of nights at a front desk &mdash; who is given a room, which room, and what goes in the register</span></div>
         <div class="row"><span class="k">Genre</span><span class="v">Adventure &middot; psychological horror &middot; atmospheric</span></div>
         <div class="row"><span class="k">Content</span><span class="v">Written for adult players. Bleak, isolating, and frightening in places &mdash; and deliberately without violence, gore, blood, on-screen death, sexual content or nudity</span></div>
-        <div class="row"><span class="k">Demo</span><span class="v">Not yet announced</span></div>
+        <div class="row"><span class="k">Demo</span><span class="v">Free demo live on Steam since Oct 18, 2026 (in Steam Next Fest until Oct 26) &mdash; <a href="https://store.steampowered.com/app/5136910/" target="_blank" rel="noopener noreferrer">download from the store page</a></span></div>
         <div class="row"><span class="k">Store</span><span class="v"><a href="https://store.steampowered.com/app/5136910/" target="_blank" rel="noopener noreferrer">Live on Steam</a></span></div>
         <div class="row"><span class="k">Website</span><span class="v"><a href="/">3cats.studio</a></span></div>
         <div class="row"><span class="k">Press contact</span><span class="v"><a href="mailto:info@3cats.studio">info@3cats.studio</a></span></div>
